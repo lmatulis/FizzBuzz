@@ -59,11 +59,11 @@ function displayFizzBuzz(numbers, fizzValue, buzzValue) {
 
             output += '<div class="fizz-buzz border border-2 p-3 text-center">FizzBuzz</div>';
 
-        } else if(numbers[index] % fizzValue == 0 && numbers[index] % buzzValue != 0) {
+        } else if(numbers[index] % fizzValue == 0) {
 
             output += '<div class="fizz border border-2 p-3 text-center">Fizz</div>';
 
-        } else if(numbers[index] % buzzValue == 0 && numbers[index] % fizzValue != 0) {
+        } else if(numbers[index] % buzzValue == 0) {
 
             output += '<div class="buzz border border-2 p-3 text-center">Buzz</div>';
 
