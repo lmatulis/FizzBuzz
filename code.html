@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>App Name Coding Challenge by Luke Matulis</title>
+    <title>FizzBuzz: Coding Challenge by Luke Matulis</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,7 +44,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/index.html">
                     <img src="/img/myLogos/logo-light.png" width="40" alt="" class="d-inline-block align-text-center">
-                    APP NAME HERE
+                    FizzBuzz
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,9 +94,37 @@
                 </pre>
             </div>
             <div class="col-12 col-lg-4">
-                <p>The code is structured in one function</p>
-                <h5>getValues2</h5>
-                <p>Displays the user message</p>
+                <h2>FizzBuzz</h2>
+                <h4 class="mt-3">Overview</h4>
+                <p>
+                    A app that prints integers from one to a given number, replacing multiples of three with "fizz", multiples of five
+                    with "buzz", and multiples of both with "fizzbuzz".
+                </p>
+                <p>
+                    This app has three functions that accomplish this task.
+                </p>
+
+                <h5>getValues</h5>
+                <p>
+                    Gets values from user and parses them. Checks for input issues 
+                    and then calls the functions to generate an array of numbers 
+                    and to display that array
+                </p>
+
+                <h5>generateFizzBuzz</h5>
+                <p>
+                    Using the stopValue from user input, this function generates 
+                    an array of numbers from 1 to the stopValue. Then it returns 
+                    the array.
+                </p>
+
+                <h5>displayFizzBuzz</h5>
+                <p>
+                    This function constructs a string of HTML that is used to display 
+                    the results of FizzBuzz. There are three important logic statements 
+                    that determine if the current value of array is divisible by 3 or 5 
+                    or both.
+                </p>
             </div>
         </div>
     </main>
@@ -112,7 +140,7 @@
                 <div class="col text-center">
                     <img src="/img/myLogos/logo-light.png" width="70">
                 </div>
-                <div class="col hstack gap-0 justify-content-center">
+                <div class="col hstack gap-0 justify-content-center justify-content-md-end">
                     <div>
                         <a href="#" class="text-decoration-none"><i class="bi bi-linkedin social-icons p-2"></i></a>
                     </div>

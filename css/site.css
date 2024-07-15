@@ -107,3 +107,16 @@ footer i {
 footer i:hover {
     color: var(--cf-theme-300);
 }
+
+.fizz {
+    background-color: lightgray;
+}
+
+.buzz {
+    background-color: #212121;
+    color: #ebebeb;
+}
+
+.fizz-buzz {
+    background-color: orange;
+}
