@@ -65,7 +65,7 @@
                             <a class="nav-link" href="https://github.com/lmatulis/FizzBuzz" target="_blank">Repo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="https://lmatulis-portfolio.netlify.app/">About</a>
                         </li>
                     </ul>
                 </div>
@@ -81,49 +81,131 @@
             <div class="col-12 col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-javascript language-html">
-                        //Get values from the screen and display
-                        function getValues2() {
-                        let message = document.getElementById("message").value
-                        let alertbox = document.getElementById("alertBox")
-                        
-                        alertbox.innerText = message
-                        }
-                        
-                        //document.getElementById("btn-submit").addEventListener("click", getValues2);
+//get values from user and parse. check for input issues. Then call functions to generate array of numbers and display that array
+function getValues() {
+    //initialize variables for user input
+    let fizzValue = document.getElementById("fizzValue").value;
+    let buzzValue = document.getElementById("buzzValue").value;
+    let stopValue = document.getElementById("stopValue").value;
+
+    //parse variables
+    fizzValue = parseInt(fizzValue);
+    buzzValue = parseInt(buzzValue);
+    stopValue = parseInt(stopValue);
+
+    //check for input that is incorrect or out of bounds
+    if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue) && Number.isInteger(stopValue) && stopValue <= 5000) {
+
+        //generate numbers funciton
+        let numbers = generateFizzBuzz(stopValue);
+
+        //display numbers funciton
+        displayFizzBuzz(numbers, fizzValue, buzzValue);
+
+        //check the type of input error. Display message
+    } else if(stopValue > 5000) {
+        alert("The Stop Value exceeded the bounds. Enter a number that is less than or equal to 5000.");
+    } else {
+        alert("Input must be a number. Please enter a number to continue.");
+    }
+}
+
+//generate numbers
+function generateFizzBuzz(stopValue) {
+    //initialize array
+    let numbers = [];
+
+    //loop to add items to array
+    for(i = 1; i &lt;= stopValue; i++) {
+        numbers.push(i);
+    }
+
+    return numbers;
+
+}
+
+//display numbers
+function displayFizzBuzz(numbers, fizzValue, buzzValue) {
+    //templates for divs
+    //"`<xmp><div class="border border-2 p-3 text-center">${numbers[index]}</div></xmp>`"    base     condition
+    //"<xmp><div class="fizz border border-2 p-3 text-center">Fizz</div></xmp>"              fizz     condition
+    //"<xmp><div class="buzz border border-2 p-3 text-center">Buzz</div></xmp>"              buzz     condition
+    //"<xmp><div class="fizz-buzz border border-2 p-3 text-center">FizzBuzz</div></xmp>"     fizzbuzz condition
+
+    //initialize variable for html
+    let output = "";
+
+    //loop through the array
+    for( let index = 0; index &lt; numbers.length; index++) {
+
+        if (numbers[index] % fizzValue == 0 && numbers[index] % buzzValue ==0){
+
+            output += '<xmp><div class="fizz-buzz border border-2 p-3 text-center">FizzBuzz</div></xmp>';
+
+        } else if(numbers[index] % fizzValue == 0) {
+
+            output += '<xmp><div class="fizz border border-2 p-3 text-center">Fizz</div></xmp>';
+
+        } else if(numbers[index] % buzzValue == 0) {
+
+            output += '<xmp><div class="buzz border border-2 p-3 text-center">Buzz</div></xmp>';
+
+        } else {
+
+            output += `<xmp><div class="border border-2 p-3 text-center">${numbers[index]}</div></xmp>`;
+
+        }
+
+    }
+    
+    document.getElementById("resultsDisplay").innerHTML = output;
+
+}
                     </code>
                 </pre>
             </div>
             <div class="col-12 col-lg-4">
                 <h2>FizzBuzz</h2>
-                <h4 class="mt-3">Overview</h4>
+                <h3 class="mt-3">Overview</h3>
                 <p>
-                    An app that prints integers from one to a given number, replacing multiples of three with "fizz", multiples of five
-                    with "buzz", and multiples of both with "fizzbuzz".
+                    This script takes user inputs for Fizz, Buzz, and Stop values, validates them, and generates a sequence of numbers up to
+                    the Stop value. It then displays the numbers, replacing those divisible by the Fizz and/or Buzz values with "Fizz",
+                    "Buzz", or "FizzBuzz" in a styled format.
                 </p>
                 <p>
                     This app has three functions that accomplish this task.
                 </p>
 
-                <h5>getValues</h5>
+                <h5>getValues()</h5>
                 <p>
-                    Gets values from user and parses them. Checks for input issues 
-                    and then calls the functions to generate an array of numbers 
-                    and to display that array
+                    Collects user inputs, validates them, and initiates the FizzBuzz generation and display. 
+                    Retrieves values from input fields with IDs fizzValue, buzzValue, and stopValue.
+                    Converts these inputs to integers using parseInt.
+                    Checks if all values are integers and stopValue is less than or equal to 5000.
+                    If valid, calls generateFizzBuzz and displayFizzBuzz.
+                    If stopValue exceeds 5000, alerts the user.
+                    Alerts the user if inputs are not numbers.
                 </p>
 
-                <h5>generateFizzBuzz</h5>
+                <h5>generateFizzBuzz(stopValue)</h5>
                 <p>
-                    Using the stopValue from user input, this function generates 
-                    an array of numbers from 1 to the stopValue. Then it returns 
-                    the array.
+                    Creates an array of numbers from 1 to stopValue. 
+                    Initializes an empty array numbers.
+                    Uses a for loop to populate the array with numbers from 1 to stopValue.
+                    Returns the numbers array.
                 </p>
 
-                <h5>displayFizzBuzz</h5>
+                <h5>displayFizzBuzz(numbers, fizzValue, buzzValue)</h5>
                 <p>
-                    This function constructs a string of HTML that is used to display 
-                    the results of FizzBuzz. There are three important logic statements 
-                    that determine if the current value of array is divisible by 3 or 5 
-                    or both.
+                    Displays the FizzBuzz results in a formatted HTML layout. 
+                    Initializes an empty string output.
+                    Iterates over the numbers array.
+                    Checks each number for divisibility by fizzValue and buzzValue:
+                    If divisible by both, appends a "FizzBuzz" div to output.
+                    If divisible by fizzValue, appends a "Fizz" div.
+                    If divisible by buzzValue, appends a "Buzz" div.
+                    Otherwise, appends a div with the number itself.
+                    Updates the inner HTML of the element with ID resultsDisplay to show the formatted result.
                 </p>
             </div>
         </div>
